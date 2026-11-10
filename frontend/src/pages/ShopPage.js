@@ -53,6 +53,11 @@ export default function ShopPage() {
 
       {loading ? (
         <p className="py-20 text-center text-[#5A6572]" data-testid="shop-loading">Fetching the collection…</p>
+      ) : visible.length === 0 ? (
+        <div className="py-20 text-center" data-testid="shop-unavailable">
+          <p className="font-serif-display text-xl text-[#3E2A33]">The collection couldn't load just now</p>
+          <p className="mt-2 text-sm text-[#5A6572]">Please refresh the page in a moment — if it persists, write to us via the Contact page.</p>
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((product, i) => (

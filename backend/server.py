@@ -716,7 +716,9 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=[FRONTEND_URL],
+    allow_origins=[FRONTEND_URL] + [
+        o.strip() for o in os.environ.get("CORS_ORIGINS", "").split(",") if o.strip() and o.strip() != "*"
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
