@@ -60,7 +60,7 @@ function GlitchImage({ frames, alt, active }) {
     <div className={`relative h-full w-full ${active ? "glitch-jitter" : ""}`}>
       {frames.map((src, i) => (
         <img
-          key={src}
+          key={`${i}-${src}`}
           src={src}
           alt={i === 0 ? alt : ""}
           loading="lazy"
